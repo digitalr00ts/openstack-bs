@@ -6,7 +6,12 @@ NOVA_DBPASS="$DEFAULT_PASS"
 NOVA_PASS="$DEFAULT_PASS"
 
 . admin-openrc
-echo 'CREATE DATABASE nova_api; CREATE DATABASE nova;'     "GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' IDENTIFIED BY '$NOVA_DBPASS';"     "GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' IDENTIFIED BY '$NOVA_DBPASS';"     "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY '$NOVA_DBPASS';"     "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY '$NOVA_DBPASS';"     | mysql --user=root --password=$DEFAULT_PASS
+echo 'CREATE DATABASE nova_api; CREATE DATABASE nova;' \
+  "GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' IDENTIFIED BY '$NOVA_DBPASS';" \
+  "GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' IDENTIFIED BY '$NOVA_DBPASS';" \
+  "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'localhost' IDENTIFIED BY '$NOVA_DBPASS';" \
+  "GRANT ALL PRIVILEGES ON nova.* TO 'nova'@'%' IDENTIFIED BY '$NOVA_DBPASS';" \
+  | mysql --user=root --password=$DEFAULT_PASS
 
 openstack user create --domain default --password $DEFAULT_PASS nova
 openstack role add --project service --user nova admin
