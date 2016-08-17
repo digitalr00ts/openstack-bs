@@ -12,8 +12,8 @@ fi
 
 which curl >/dev/null
 if [ $? ]; then
-  echo 'ERROR: curl command not found.' >2
-  exit 1
+  echo 'ERROR: curl command not found.' >&2
+  sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes --assume-yes install curl || exit $?
 fi
 
 echo 'Loading config.ini'
