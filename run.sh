@@ -16,9 +16,11 @@ if [ $? ]; then
   exit 1
 fi
 
+echo 'Loading config.ini'
 [ ! -f ./config.ini ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/master/config.ini
 . config.ini
 
+echo 'Running base.sh'
 [ ! -f ./base.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/master/base.sh && chmod +x base.sh
 ./base.sh
 
