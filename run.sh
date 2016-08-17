@@ -10,9 +10,9 @@ if [ -z $NODE_TYPE ]; then
   exit 1
 fi
 
-which -s curl
+which curl >/dev/null
 if [ $? ]; then
-  echo "ERROR: curl command not found."
+  echo 'ERROR: curl command not found.' >2
   exit 1
 fi
 
