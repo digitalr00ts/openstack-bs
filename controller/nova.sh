@@ -23,7 +23,7 @@ openstack endpoint create --region RegionOne compute admin http://controller:877
 sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes --assume-yes install nova-api nova-conductor nova-consoleauth nova-novncproxy nova-scheduler
 
 sudo cp -npv /etc/nova/nova.conf /etc/nova/nova.conf.original
-sed --in-place -E 's/^( )?enabled_apis( )?=.*/enabled_apis = osapi_compute,metadata/g' /etc/nova/nova.conf
+#sudo sed --in-place -E 's/^( )?enabled_apis( )?=.*/enabled_apis = osapi_compute,metadata/g' /etc/nova/nova.conf
 sudo sh -c "cat <<EOT >> /etc/nova/nova.conf
 rpc_backend = rabbit
 auth_strategy = keystone
