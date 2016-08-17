@@ -12,6 +12,7 @@ sudo sed --in-place \
   -e 's/^.*OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT =.*/OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT = True/' \
   -e 's/^.*OPENSTACK_KEYSTONE_DEFAULT_DOMAIN =.*/OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = "default"/' \
   -e 's/^.*OPENSTACK_KEYSTONE_DEFAULT_ROLE =.*/OPENSTACK_KEYSTONE_DEFAULT_ROLE = "user"/' \
+  -e "s/'LOCATION':.*/'LOCATION': 'controller:11211',/" \
 /etc/openstack-dashboard/local_settings.py
 
 sudo sh -c "echo SESSION_ENGINE = \'django.contrib.sessions.backends.cache\' >> /etc/openstack-dashboard/local_settings.py"
