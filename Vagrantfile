@@ -466,8 +466,7 @@ EOT"
     -e 's/^.*OPENSTACK_KEYSTONE_DEFAULT_ROLE =.*/OPENSTACK_KEYSTONE_DEFAULT_ROLE = "user"/' \
   /etc/openstack-dashboard/local_settings.py
 
-SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
-  sudo sh -c "echo SESSION_ENGINE = \\'django.contrib.sessions.backends.cache\\' > /etc/openstack-dashboard/local_settings.py"
+  sudo sh -c "echo SESSION_ENGINE = \\\'django.contrib.sessions.backends.cache\\\' > /etc/openstack-dashboard/local_settings.py"
   sudo sh -c 'cat <<EOT >> /etc/openstack-dashboard/local_settings.py
 OPENSTACK_API_VERSIONS = {
   "identity": 3,
