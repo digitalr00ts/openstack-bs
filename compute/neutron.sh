@@ -5,7 +5,7 @@
 ##########
 sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes --assume-yes install neutron-linuxbridge-agent
 
-cp -npv /etc/neutron/neutron.conf /etc/neutron/neutron.conf.original
+sudo cp -npv /etc/neutron/neutron.conf /etc/neutron/neutron.conf.original
 sudo sed --in-place \
   -e 's/^.*rpc_backend =.*/rpc_backend = rabbit/' \
   -e 's/^.*rabbit_host =.*/rabbit_host = controller/' \
