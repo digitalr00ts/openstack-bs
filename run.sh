@@ -25,7 +25,7 @@ echo 'Running base.sh'
 [ ! -f ./base.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/base.sh && chmod +x ./base.sh
 ./base.sh
 
-[ ! -f ./base.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/ntp.sh && chmod +x ./ntp.sh
+[ ! -f ./ntp.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/ntp.sh && chmod +x ./ntp.sh
 ./ntp.sh
 
 if [ "$NODE_TYPE" == 'controller' ]; then
@@ -50,10 +50,10 @@ if [ "$NODE_TYPE" == 'controller' ]; then
 
 elif [ "$NODE_TYPE" == 'compute' ]; then
 
-  [ ! -f ./compute/nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/nova.sh && chmod +x compute/nova.sh
+  [ ! -f ./compute/nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/nova.sh && chmod +x ./nova.sh
   .nova.sh
 
-  [ ! -f ./compute/neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/neutron.sh && chmod +x compute/neutron.sh
+  [ ! -f ./compute/neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/neutron.sh && chmod +x ./neutron.sh
   ./neutron.sh
 
 fi
