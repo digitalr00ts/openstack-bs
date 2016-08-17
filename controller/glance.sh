@@ -32,7 +32,7 @@ sudo sed --in-place \
   #-e 's/\(^sqlite_db.=.*\)/#\1/'
 sudo cp -npv /etc/glance/glance-registry.conf /etc/glance/glance-registry.conf.original
 sudo sed --in-place \
-  -e "s/^connection.=.*/connection = mysql+pymysql:\/\/glance:${GLANCE_PASS}@controller\/glance/" \
+  -e "s/^#connection.=.*/connection = mysql+pymysql:\/\/glance:${GLANCE_PASS}@controller\/glance/" \
   -e 's/^.*auth_uri.=.*/auth_uri = http:\/\/controller:5000\nauth_url = http:\/\/controller:35357/' \
   -e 's/^.*memcached_servers.=.*/memcached_servers = controller:11211/' \
   -e "s/^.*auth_type.=.*/auth_type = password\nproject_domain_name = default\nuser_domain_name = default\nproject_name = service\nusername = glance\npassword = $GLANCE_PASS/" \
