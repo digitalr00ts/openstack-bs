@@ -49,12 +49,11 @@ if [ "$NODE_TYPE" == 'controller' ]; then
   ./horizon.sh
 
 elif [ "$NODE_TYPE" == 'compute' ]; then
-  mkdir -p compute
 
   [ ! -f ./compute/nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/nova.sh && chmod +x compute/nova.sh
-  ./compute/nova.sh
+  .nova.sh
 
   [ ! -f ./compute/neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/neutron.sh && chmod +x compute/neutron.sh
-  ./compute/neutron.sh
+  ./neutron.sh
 
 fi
