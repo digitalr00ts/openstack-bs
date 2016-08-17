@@ -45,6 +45,9 @@ if [ "$NODE_TYPE" == 'controller' ]; then
   [ ! -f ./neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/neutron.sh && chmod +x ./neutron.sh
   ./neutron.sh
 
+  [ ! -f ./neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/horizon.sh && chmod +x ./horizon.sh
+  ./horizon.sh
+
 elif [ "$NODE_TYPE" == 'compute' ]; then
   mkdir -p compute
 
