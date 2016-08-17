@@ -30,6 +30,8 @@ echo 'Running base.sh'
 
 if [ "$NODE_TYPE" == 'controller' ]; then
 
+  mkdir -p controller && cd $_
+
   [ ! -f ./environment.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/environment.sh && chmod +x ./environment.sh
   ./environment.sh
 
@@ -39,7 +41,7 @@ if [ "$NODE_TYPE" == 'controller' ]; then
   [ ! -f ./glance.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/glance.sh && chmod +x ./glance.sh
   ./glance.sh
 
-  . admin-openrc
+  . ~/admin-openrc
   wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
   openstack image create "cirros" --file cirros-0.3.4-x86_64-disk.img --disk-format qcow2 --container-format bare --public
 
@@ -53,6 +55,8 @@ if [ "$NODE_TYPE" == 'controller' ]; then
   ./horizon.sh
 
 elif [ "$NODE_TYPE" == 'compute' ]; then
+
+  mkdir -p compute && cd $_
 
   [ ! -f ./compute/nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/compute/nova.sh && chmod +x ./nova.sh
   ./nova.sh

@@ -7,7 +7,7 @@ NEUTRON_DBPASS="$DEFAULT_PASS"
 NEUTRON_PASS="$DEFAULT_PASS"
 METADATA_SECRET=$(openssl rand -hex 10)
 
-. admin-openrc
+. ~/admin-openrc
 
 echo "CREATE DATABASE neutron;" \
   "GRANT ALL PRIVILEGES ON neutron.* TO 'neutron'@'localhost' IDENTIFIED BY '$NEUTRON_DBPASS';" \

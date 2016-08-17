@@ -79,7 +79,7 @@ openstack role create user
 openstack role add --project demo --user demo user
 sudo sed --in-place -e 's/\(^pipeline.=.*\)admin_token_auth/\1/' /etc/keystone/keystone-paste.ini
 unset OS_TOKEN OS_URL
-cat <<EOT > ~\admin-openrc
+cat <<EOT > ~/admin-openrc
 export OS_PROJECT_DOMAIN_NAME=default
 export OS_USER_DOMAIN_NAME=default
 export OS_PROJECT_NAME=admin
@@ -89,7 +89,7 @@ export OS_AUTH_URL=http://controller:35357/v3
 export OS_IDENTITY_API_VERSION=3
 export OS_IMAGE_API_VERSION=2
 EOT
-cat <<EOT > ~\demo-openrc
+cat <<EOT > ~/demo-openrc
 export OS_PROJECT_DOMAIN_NAME=default
 export OS_USER_DOMAIN_NAME=default
 export OS_PROJECT_NAME=demo

@@ -6,7 +6,7 @@
 GLANCE_DBPASS="$DEFAULT_PASS"
 GLANCE_PASS="$DEFAULT_PASS"
 
-. admin-openrc
+. ~/admin-openrc
 echo 'CREATE DATABASE glance;'    "GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'localhost' IDENTIFIED BY '$GLANCE_DBPASS';"     "GRANT ALL PRIVILEGES ON glance.* TO 'glance'@'%' IDENTIFIED BY '$GLANCE_DBPASS';"     | mysql --user=root --password=$DEFAULT_PASS
 
 openstack user create --domain default --password $GLANCE_PASS glance

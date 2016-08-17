@@ -6,7 +6,7 @@
 NOVA_DBPASS="$DEFAULT_PASS"
 NOVA_PASS="$DEFAULT_PASS"
 
-. admin-openrc
+. ~/admin-openrc
 echo 'CREATE DATABASE nova_api; CREATE DATABASE nova;' \
   "GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'localhost' IDENTIFIED BY '$NOVA_DBPASS';" \
   "GRANT ALL PRIVILEGES ON nova_api.* TO 'nova'@'%' IDENTIFIED BY '$NOVA_DBPASS';" \
