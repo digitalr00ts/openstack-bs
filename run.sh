@@ -25,6 +25,9 @@ echo 'Running base.sh'
 [ ! -f ./base.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/base.sh && chmod +x ./base.sh
 ./base.sh
 
+[ ! -f ./base.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/ntp.sh && chmod +x ./ntp.sh
+./ntp.sh
+
 if [ "$NODE_TYPE" == 'controller' ]; then
 
   [ ! -f ./environment.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/environment.sh && chmod +x ./environment.sh
