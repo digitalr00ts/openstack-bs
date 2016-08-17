@@ -50,10 +50,10 @@ if [ "$NODE_TYPE" == 'controller' ]; then
 
 elif [ "$NODE_TYPE" == 'compute' ]; then
 
-  [ ! -f ./compute/nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/nova.sh && chmod +x ./nova.sh
-  .nova.sh
+  [ ! -f ./compute/nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/compute/nova.sh && chmod +x ./nova.sh
+  ./nova.sh
 
-  [ ! -f ./compute/neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/neutron.sh && chmod +x ./neutron.sh
+  [ ! -f ./compute/neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/compute/neutron.sh && chmod +x ./neutron.sh
   ./neutron.sh
 
 fi
