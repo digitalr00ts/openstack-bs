@@ -19,6 +19,8 @@ fi
 [ ! -f ./config.ini ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/master/config.ini
 . config.ini
 
+[ ! -f ./base.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/master/base.sh && chmod +x base.sh
+./base.sh
 
 if [ "$NODE_TYPE" == 'controller' ]; then
   mkdir -p controller

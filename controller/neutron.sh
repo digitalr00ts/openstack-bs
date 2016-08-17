@@ -55,7 +55,7 @@ sudo sed --in-place \
 
 sudo cp -npv /etc/neutron/plugins/ml2/linuxbridge_agent.ini /etc/neutron/plugins/ml2/linuxbridge_agent.ini.original
 sudo sed --in-place \
-  -e 's/^.*physical_interface_mappings =.*/physical_interface_mappings = provider:eth1/' \
+  -e "s/^.*physical_interface_mappings =.*/physical_interface_mappings = provider:$PROV_ETH/" \
   -e 's/^.*enable_vxlan =.*/enable_vxlan = True/' \
   -e "s/^.*local_ip =.*/local_ip = $IP/" \
   -e 's/^.*l2_population =.*/l2_population = True/' \
