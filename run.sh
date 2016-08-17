@@ -27,19 +27,19 @@ echo 'Running base.sh'
 
 if [ "$NODE_TYPE" == 'controller' ]; then
 
-  [ ! -f ./environment.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/environment.sh && chmod +x ./environment.sh
+  [ ! -f ./environment.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/environment.sh && chmod +x ./environment.sh
   ./environment.sh
 
-  [ ! -f ./keystone.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/keystone.sh && chmod +x ./keystone.sh
+  [ ! -f ./keystone.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/keystone.sh && chmod +x ./keystone.sh
   ./keystone.sh
 
-  [ ! -f ./glance.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/glance.sh && chmod +x ./glance.sh
+  [ ! -f ./glance.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/glance.sh && chmod +x ./glance.sh
   ./glance.sh
 
-  [ ! -f ./nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/nova.sh && chmod +x ./nova.sh
+  [ ! -f ./nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/nova.sh && chmod +x ./nova.sh
   ./nova.sh
 
-  [ ! -f ./neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/neutron.sh && chmod +x ./neutron.sh
+  [ ! -f ./neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/neutron.sh && chmod +x ./neutron.sh
   ./neutron.sh
 
 elif [ "$NODE_TYPE" == 'compute' ]; then
