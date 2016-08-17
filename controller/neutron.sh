@@ -78,7 +78,7 @@ sudo sed --in-place \
 
 sudo sed --in-place \
   -e 's/^.*nova_metadata_ip =.*/nova_metadata_ip = controller/' \
-  -e "s/^.*metadata_proxy_shared_secret =.*/metadata_proxy_shared_secret = $METADATA_SECRET/"
+  -e "s/^.*metadata_proxy_shared_secret =.*/metadata_proxy_shared_secret = $METADATA_SECRET/" \
   /etc/neutron/metadata_agent.ini
 sudo sh -c "cat <<EOT >> /etc/nova/nova.conf
 
