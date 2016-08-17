@@ -39,6 +39,10 @@ if [ "$NODE_TYPE" == 'controller' ]; then
   [ ! -f ./glance.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/glance.sh && chmod +x ./glance.sh
   ./glance.sh
 
+  . admin-openrc
+  wget http://download.cirros-cloud.net/0.3.4/cirros-0.3.4-x86_64-disk.img
+  openstack image create "cirros" --file cirros-0.3.4-x86_64-disk.img --disk-format qcow2 --container-format bare --public
+
   [ ! -f ./nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/controller/nova.sh && chmod +x ./nova.sh
   ./nova.sh
 
