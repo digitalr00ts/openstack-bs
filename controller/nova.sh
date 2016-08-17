@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##########
 #Nova
 #http://docs.openstack.org/mitaka/install-guide-ubuntu/nova-controller-install.html

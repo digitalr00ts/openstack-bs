@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo 'apt-get update' ; sudo apt-get update -qqy
 sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes --assume-yes --no-install-recommends install vim
 sudo apt-get --force-yes --assume-yes purge resolvconf

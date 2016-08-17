@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##########
 #Enviroment
 #http://docs.openstack.org/mitaka/install-guide-ubuntu/environment.html

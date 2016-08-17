@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##########
 #Keystone
 #http://docs.openstack.org/mitaka/install-guide-ubuntu/keystone-install.html

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##########
 #Neutron
 #http://docs.openstack.org/mitaka/install-guide-ubuntu/neutron-controller-install.html

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ##########
 #Glance
 #http://docs.openstack.org/mitaka/install-guide-ubuntu/glance-install.html
