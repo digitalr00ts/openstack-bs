@@ -10,10 +10,11 @@ if [ -z $NODE_TYPE ]; then
   exit 1
 fi
 
+echo 'Checking for curl'
 which curl >/dev/null
 if [ $? ]; then
   echo 'ERROR: curl command not found.' >&2
-  sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes --assume-yes install curl || exit $?
+  sudo apt-get --force-yes --assume-yes install curl || exit $?
 fi
 
 echo 'Loading config.ini'
