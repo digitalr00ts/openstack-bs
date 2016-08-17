@@ -18,38 +18,37 @@ if [ $? ]; then
 fi
 
 echo 'Loading config.ini'
-[ ! -f ./config.ini ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/master/config.ini
-. config.ini
+[ ! -f ./config.ini ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/config.ini
+. ./config.ini
 
 echo 'Running base.sh'
-[ ! -f ./base.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/master/base.sh && chmod +x base.sh
+[ ! -f ./base.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/master/base.sh && chmod +x ./base.sh
 ./base.sh
 
 if [ "$NODE_TYPE" == 'controller' ]; then
-  mkdir -p controller
 
-  [ ! -f ./controller/environment.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/controller/environment.sh && chmod +x controller/environment.sh
-  ./controller/environment.sh
+  [ ! -f ./environment.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/environment.sh && chmod +x ./environment.sh
+  ./environment.sh
 
-  [ ! -f ./controller/keystone.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/controller/keystone.sh && chmod +x controller/keystone.sh
-  ./controller/keystone.sh
+  [ ! -f ./keystone.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/keystone.sh && chmod +x ./keystone.sh
+  ./keystone.sh
 
-  [ ! -f ./controller/glance.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/controller/glance.sh && chmod +x controller/glance.sh
-  ./controller/glance.sh
+  [ ! -f ./glance.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/glance.sh && chmod +x ./glance.sh
+  ./glance.sh
 
-  [ ! -f ./controller/nova.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/controller/nova.sh && chmod +x controller/nova.sh
-  ./controller/nova.sh
+  [ ! -f ./nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/nova.sh && chmod +x ./nova.sh
+  ./nova.sh
 
-  [ ! -f ./controller/neutron.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/controller/neutron.sh && chmod +x controller/neutron.sh
-  ./controller/neutron.sh
+  [ ! -f ./neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/controller/neutron.sh && chmod +x ./neutron.sh
+  ./neutron.sh
 
 elif [ "$NODE_TYPE" == 'compute' ]; then
   mkdir -p compute
 
-  [ ! -f ./compute/nova.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/compute/nova.sh && chmod +x compute/nova.sh
+  [ ! -f ./compute/nova.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/nova.sh && chmod +x compute/nova.sh
   ./compute/nova.sh
 
-  [ ! -f ./compute/neutron.sh ] && curl --progress-bar -LO https://github.com/digitalr00ts/openstack-bs/raw/compute/neutron.sh && chmod +x compute/neutron.sh
+  [ ! -f ./compute/neutron.sh ] && curl -sSLO https://github.com/digitalr00ts/openstack-bs/raw/compute/neutron.sh && chmod +x compute/neutron.sh
   ./compute/neutron.sh
 
 fi
