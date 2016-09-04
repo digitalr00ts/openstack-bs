@@ -19,7 +19,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.synced_folder "salt/", "/srv/salt/",
-    create: true;
+    create: true,
     owner: "root", group: "root"
 
   config.vm.synced_folder "salt/minion.d", "/etc/salt/minion.d",
