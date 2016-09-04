@@ -18,11 +18,16 @@ Vagrant.configure(2) do |config|
     compute1.vm.network "private_network", ip: "10.0.0.31", netmask: "24", virtualbox__intnet: true
   end
 
-  config.vm.synced_folder "salt/", "/srv/salt/"
+  config.vm.synced_folder "salt/", "/srv/salt/",
+    create: true;
+    owner: "root", group: "root"
 
-  config.vm.provision :shell do |shell|
-    shell.inline = "sudo rmdir /etc/salt/minion.d ; sudo ln -s /srv/salt/minion.d /etc/salt/minion.d"
-  end
+  config.vm.synced_folder "salt/minion.d", "/etc/salt/minion.d",
+    owner: "root", group: "root"
+
+  # config.vm.provision :shell do |shell|
+  #   shell.inline = "sudo rmdir /etc/salt/minion.d ; sudo mkdir -p /etc/salt ; sudo ln -s /srv/salt/minion.d /etc/salt/minion.d"
+  # end
 
   config.vm.provision :salt do |salt|
     salt.masterless = true
