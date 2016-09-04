@@ -12,9 +12,9 @@ base:
   '*':
     - enviroment.base
 
-# controllers:
-#   'controller*':
-#     - enviroment.controller
+controller:
+  'controller*':
+    - enviroment.controller
 #
 # computes:
 #   'compute*':
