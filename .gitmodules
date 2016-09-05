@@ -1,4 +1,12 @@
+[submodule "Memcached"]
+	path = salt/submodules/memcached
+	url = https://github.com/saltstack-formulas/memcached-formula.git
+	shallow = true
 [submodule "MySQL"]
 	path = salt/submodules/mysql
 	url = https://github.com/saltstack-formulas/mysql-formula.git
+	shallow = true
+[submodule "RabbitMQ"]
+	path = salt/submodules/rabbitmq
+	url = https://github.com/saltstack-formulas/rabbitmq-formula.git
 	shallow = true
