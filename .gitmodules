@@ -10,3 +10,7 @@
 	path = salt/submodules/rabbitmq
 	url = https://github.com/saltstack-formulas/rabbitmq-formula.git
 	shallow = true
+[submodule "OpenStack Keystone"]
+	path = salt/submodules/keystone
+	url = https://github.com/openstack/salt-formula-keystone.git
+	shallow = true
