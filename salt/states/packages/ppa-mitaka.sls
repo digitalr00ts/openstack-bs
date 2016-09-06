@@ -1,3 +1,6 @@
+include:
+  - packages.system-update
+
 install-ubuntu-cloud-keyring:
   pkg.latest:
     - name: ubuntu-cloud-keyring
@@ -14,6 +17,8 @@ add-mitaka-ppa:
       - install-ubuntu-cloud-keyring
       - install-software-properties-common
       - install-python-software-properties
+    - watch_in:
+      - pkg: system-update
 
 add-mitaka-ppa-src:
   pkgrepo.managed:
