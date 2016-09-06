@@ -13,8 +13,7 @@ include:
   - packages.python-software-properties
   - packages.resolvconf.purge
   - packages.ppa-mitaka
-  - packages.system-update
+  # - packages.system-update
   - packages.vim
   - packages.chrony
   - packages.python-openstackclient
-#   - packages.mysql
