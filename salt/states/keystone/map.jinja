@@ -1,10 +1,10 @@
 
 {% set server = salt['grains.filter_by']({
     'Debian': {
-        'pkgs': ['keystone', 'python-keystone', 'python-keystoneclient', 'python-psycopg2', 'python-mysqldb', 'mysql-client', 'python-six', 'python-memcache', 'python-openstackclient', 'gettext-base'],
+        'pkgs': ['keystone', 'python-keystone', 'python-keystoneclient', 'python-psycopg2', 'python-six', 'python-openstackclient', 'gettext-base'],
         'service_name': 'keystone',
-        'version': 'icehouse',
-        'api_version': '2',
+        'version': 'mitaka',
+        'api_version': '3',
         'tokens': {
           'engine': 'database',
           'expiration': '86400'

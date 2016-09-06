@@ -4,3 +4,5 @@
 include:
   - .packages
   - .file
+  - .cmd
+  #- .endpoints

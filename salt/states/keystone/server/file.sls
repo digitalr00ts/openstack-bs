@@ -2,7 +2,9 @@
 # vim: ft=sls
 
 {%- from "keystone/map.jinja" import server with context %}
-{%- if server.enabled %}
+
+include:
+  - apache.mod_wsgi
 
 keystone_file_override:
   file.managed:
@@ -38,14 +40,24 @@ keystone_file_conf:
         revoke:
           driver: sql
 
-# keystone_file_apache:
-#   file.managed:
-#     - name: /etc/apache2/sites-enabled/wsgi-keystone.conf
-#     - source: salt://keystone/server/files/apache_keystone_conf
-#     - user: root
-#     - group: root
-#     - mode: 644
-#     - watch_in:
-#       - service: apache-service
+keystone_file_apache:
+  file.managed:
+    - name: /etc/apache2/sites-available/wsgi-keystone.conf
+    - source: salt://keystone/server/files/apache_keystone_conf
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - pkg: mod_wsgi
+    - watch_in:
+      - module: apache-reload
 
-{%- endif %}
+keystone_file_apache_enable:
+  file.symlink:
+    - name: /etc/apache2/sites-enabled/wsgi-keystone.conf
+    - target: /etc/apache2/sites-available/wsgi-keystone.conf
+    - user: root
+    - group: root
+    - mode: 644
+    - require:
+      - file: keystone_file_apache
