@@ -36,16 +36,27 @@ mysqld-packages:
       - debconf: mysql_debconf
 {% endif %}
 
+{% if mysql.server == 'mariadb-server' %}
+# Workaround for MariaDB 5.5 init.d bug
+mysqld_initd:
+  file.line:
+    - name: /etc/init.d/mysql
+    - content: '/usr/bin/mysqld_safe "${@:2}" >/dev/null 2>&1 | $ERR_LOGGER &'
+    - match: '/usr/bin/mysqld_safe "${@:2}" 2>&1 >/dev/null | $ERR_LOGGER &'
+    - mode: replace
+    - indent: true
+    - require:
+      - pkg: mysqld-packages
+{% endif %}
+
 mysqld:
-{% if mysql.server == 'mysql-server' %}
   service.running:
     - name: {{ mysql.service }}
     - enable: True
-{% else %}
-  cmd.wait:
-    - name: service {{ mysql.service }} start
-{% endif %}
     - require:
       - pkg: {{ mysql.server }}
+{% if mysql.server == 'mariadb-server' %}
+      - file: mysqld_initd
+{% endif %}
     - watch:
       - pkg: {{ mysql.server }}
