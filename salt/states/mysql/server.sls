@@ -37,11 +37,14 @@ mysqld-packages:
 {% endif %}
 
 mysqld:
-  # service.running:
-  #   - name: {{ mysql.service }}
-  #   - enable: True
+{% if mysql.server == 'mysql-server' %}
+  service.running:
+    - name: {{ mysql.service }}
+    - enable: True
+{% else %}
   cmd.wait:
     - name: service {{ mysql.service }} start
+{% endif %}
     - require:
       - pkg: {{ mysql.server }}
     - watch:
