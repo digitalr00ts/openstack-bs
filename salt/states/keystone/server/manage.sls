@@ -7,8 +7,9 @@
 
 include:
   - mysql.python
-  #- mysql.user
+  - mysql.user
   - .packages
+  - .file
 
 {%- if not grains.get('noservices', False) %}
 keystone_syncdb:
@@ -18,10 +19,11 @@ keystone_syncdb:
     - ini: keystone_file_conf
   - require:
     - pkg: mysql_python
-    # TO DO: fix check for user grants
-    {#% for name, user in salt['pillar.get']('mysql:user', {}).items() %}
+    #- mysql.user
+    # TO DO: check if necassary; fix check for user grants
+    {% for name, user in salt['pillar.get']('mysql:user', {}).items() %}
     - mysql_user: {{ name }}
-    {% endfor %#}
+    {% endfor %}
 {%- endif %}
 
 {% if server.tokens.engine == 'fernet' %}
