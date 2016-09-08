@@ -73,12 +73,14 @@ include:
 
 {%- if 'databases' in user %}
 {% for db in user['databases'] %}
+
 {{ state_id ~ '_' ~ loop.index0 }}:
   mysql_grants.present:
     - name: {{ name ~ '_' ~ db['database']  ~ '_' ~ db['table'] | default('all') }}
     - grant: {{db['grants']|join(",")}}
     - database: '{{ db['database'] }}.{{ db['table'] | default('*') }}'
     - grant_option: {{ db['grant_option'] | default(False) }}
+    {% if user['ssl'] is defined %}
     - ssl_option:
       - SSL: {{ user['ssl'] | default(False) }}
     {% if user['ssl-X509'] is defined %}
@@ -92,6 +94,7 @@ include:
     {% endif %}
     {% if user['ssl-CIPHER'] is defined %}
       - CIPHER: {{ user['ssl-CIPHER'] }}
+    {% endif %}
     {% endif %}
     - user: {{ name }}
     - host: '{{ host }}'
