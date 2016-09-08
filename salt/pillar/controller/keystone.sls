@@ -18,12 +18,13 @@ mysql:
   user:
     keystone:
       password: 'keystone'
+      hosts:
+        - 'localhost'
       databases:
-        - host: localhost
-        - database: keystone
+        - database: 'keystone'
           grants:
             - 'all privileges'
-          grant_option: True
+          #grant_option: True
 
 keystone:
   server:
