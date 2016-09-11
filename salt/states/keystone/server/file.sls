@@ -5,6 +5,7 @@
 
 include:
   - apache.mod_wsgi
+  - .packages
 
 keystone_file_override:
   file.managed:
@@ -49,8 +50,6 @@ keystone_file_apache:
     - mode: 644
     - require:
       - pkg: mod_wsgi
-    - watch_in:
-      - module: apache-reload
 
 keystone_file_apache_enable:
   file.symlink:
@@ -59,5 +58,19 @@ keystone_file_apache_enable:
     - user: root
     - group: root
     - mode: 644
+    - watch_in:
+      - module: apache-reload
     - require:
       - file: keystone_file_apache
+
+{%- from "keystone/map.jinja" import server with context %}
+
+/root/keystonerc:
+  file.managed:
+  - source: salt://keystone/files/keystonerc
+  - template: jinja
+
+/root/keystonercv3:
+  file.managed:
+  - source: salt://keystone/files/keystonercv3
+  - template: jinja
