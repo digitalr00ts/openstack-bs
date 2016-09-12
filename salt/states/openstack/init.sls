@@ -2,7 +2,6 @@
 # vim: ft=sls
 
 {%- from "openstack/map.jinja" import server with context %}
-
 include:
   - .client
 {% if server.service is defined %}
