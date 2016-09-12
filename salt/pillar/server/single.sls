@@ -33,18 +33,22 @@ openstack:
     roles:
       - admin
       - user
+    region: RegionOne
     domain:
       default:
         tenant:
           admin:
+            name: 'admin'
             description: 'Admin Project'
             user:
               admin:
+                name: admin
                 password: admin_pass
                 email: root@localhost
                 roles:
                   - admin
           service:
+            name: 'service'
             description: 'Service Project'
     service:
       keystone:
@@ -64,15 +68,15 @@ openstack:
           name: 'keystone'
           password: 'keystone'
           user: 'keystone'
-        tokens:
-          engine: fernet
+        token:
+          provider: fernet
   # Example of adding client configuration w/o server
   # client:
   #   service:
   #     keystone:
   #       enabled: true
 
-keystone:
+keystone2:
   server:
     enabled: true
     version: mitaka

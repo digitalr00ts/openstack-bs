@@ -12,7 +12,7 @@ base:
   '*':
     - .mysql
 
-servers:
+server:
   'controller*':
     - server.single
 #
