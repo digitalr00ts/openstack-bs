@@ -12,9 +12,9 @@ base:
   '*':
     - .mysql
 
-controller:
+servers:
   'controller*':
-    - controller.keystone
+    - server.single
 #
 # computes:
 #   'compute*':
