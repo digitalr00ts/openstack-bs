@@ -24,7 +24,7 @@ keystone_syncdb:
     {% endfor %}
 {%- endif %}
 
-{% if server.service.keystone.tokens.engine == 'fernet' %}
+{% if server.service.keystone.token.provider == 'fernet' %}
 {%- if not grains.get('noservices', False) %}
 keystone_fernet_setup:
   cmd.wait:

@@ -38,10 +38,14 @@ keystone_file_conf:
         memcache:
           servers: {{ keystone.cache.host }}:{{ keystone.cache.port }}
         {%- endif %}
-        token:
-          provider: uuid
-          driver: memcache
         {%- endif %}
+        {%- if keystone.token is defined %}
+        token:
+        {%- if keystone.token.provider is defined %}
+          provider: {{ keystone.token.provider }}
+        {%- endif %}
+        {%- endif %}
+          #driver: memcache
         # Should add check that server.database.engine contains mysql
         revoke:
           driver: sql
@@ -70,13 +74,11 @@ keystone_file_apache_enable:
     - require:
       - file: keystone_file_apache
 
-{%- from "keystone/map.jinja" import server with context %}
+/root/keystonerc:
+  file.managed:
+  - source: salt://openstack/keystone/files/keystonerc
+  - template: jinja
 
-# /root/keystonerc:
-#   file.managed:
-#   - source: salt://keystone/files/keystonerc
-#   - template: jinja
-#
 /root/keystonercv3:
   file.managed:
   - source: salt://openstack/keystone/files/keystonercv3

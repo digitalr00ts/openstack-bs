@@ -1,10 +1,10 @@
-{%- set server = pillar.keystone.server %}
+{%- set server = pillar.openstack.server %}
 export OS_IDENTITY_API_VERSION=3
-export OS_AUTH_URL=http://{{ server.bind.private_address }}:{{ server.bind.private_port }}/v3
+export OS_AUTH_URL=http://{{ server.service.keystone.bind.admin_address }}:{{ server.service.keystone.bind.admin_port }}/v3
 export OS_PROJECT_DOMAIN_NAME=default
 export OS_USER_DOMAIN_NAME=default
-export OS_PROJECT_NAME={{ server.admin_tenant }}
-export OS_TENANT_NAME={{ server.admin_tenant }}
-export OS_USERNAME={{ server.admin_name }}
-export OS_PASSWORD={{ server.admin_password }}
+export OS_PROJECT_NAME={{ server.domain.default.tenant.admin.name }}
+export OS_TENANT_NAME={{ server.domain.default.tenant.admin.name }}
+export OS_USERNAME={{ server.domain.default.tenant.admin.user.admin.name }}
+export OS_PASSWORD={{ server.domain.default.tenant.admin.user.admin.password }}
 export OS_REGION_NAME={{ server.region }}

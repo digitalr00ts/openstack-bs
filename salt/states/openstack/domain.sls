@@ -14,10 +14,12 @@ os_roles:
 
 os_domain_{{ domain }}:
   cmd.run:
-    - name: source /root/keystonercv3 && openstack domain create --description "{{ param.description }}" {{ domain }}
-    - unless: source /root/keystonercv3 && openstack domain list | grep " {{ domain }}"
+    - name: source /root/keystonerc && openstack domain create --description "{{ param.description }}" {{ domain }}
+    - unless: source /root/keystonerc && openstack domain list | grep " {{ domain }}"
+    #- name: export  && openstack domain create --description "{{ param.description }}" {{ domain }}
+    #- unless: source /root/keystonerc && openstack domain list | grep " {{ domain }}"
     - require:
-      - file: /root/keystonercv3
+      - file: /root/keystonerc
 
 {%- for tenant_name, tenant in param.get('tenant', {}).iteritems() %}
 

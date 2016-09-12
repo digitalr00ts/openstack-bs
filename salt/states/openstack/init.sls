@@ -8,13 +8,11 @@ include:
 {% if server.service is defined %}
 
 {% for service in server.get('service', {}) %}
-{%- if server.service.keystone.enabled %}
   - .{{ service }}
+{%- if service == 'keystone' and server.domain is defined %}
+  - .domain
 {%- endif %}
 {% endfor %}
 
-{% if server.domain is defined %}
-  - .domain
-{%- endif %}
 
 {%- endif %}
