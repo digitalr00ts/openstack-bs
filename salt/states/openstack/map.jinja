@@ -1,0 +1,45 @@
+{% set server = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': ['keystone', 'python-keystone', 'python-psycopg2', 'python-six', 'gettext-base'],
+        'service_name': 'keystone',
+        'version': 'mitaka',
+        'api_version': '3',
+        'tokens': {
+          'engine': 'database',
+          'expiration': '86400'
+        },
+        'notification': False,
+        'roles': ['admin', 'Member'],
+        'service': {
+            'keystone': {
+                'name': 'keystone',
+                'type': 'identity',
+                'description': "OpenStack Identity",
+                'pkgs': ['keystone', 'python-keystone', 'python-psycopg2', 'python-six', 'gettext-base'],
+            },
+            'glance': {
+                'name': glance,
+                'type': images,
+                'description': "OpenStack",
+                'pkgs': [],
+            },
+        },
+        'domain': {
+            'default': {
+                'description': 'Default Domain',
+            },
+        },
+    },
+    'RedHat': {
+        'pkgs': ['openstack-keystone', 'openstack-utils', 'python-keystone', 'python-keystoneclient'],
+        'service_name': 'openstack-keystone',
+        'api_version': '2',
+        'version': 'icehouse',
+        'tokens': {
+          'engine': 'database',
+          'expiration': '86400'
+        },
+        'notification': False,
+        'roles': ['admin', 'Member']
+    },
+}, merge=salt['pillar.get']('openstack:server')) %}

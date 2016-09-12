@@ -1,0 +1,14 @@
+{% set client = salt['grains.filter_by']({
+    'Debian': {
+        'pkgs': [ 'python-openstackclient' ],
+        'roles': ['admin', 'Member'],
+        'service': {
+            'keystone': { 'pkgs': ['python-keystoneclient'], },
+            'glance': {},
+        },
+    },
+    'RedHat': {
+        'roles': ['admin', 'Member'],
+        'keystone': { 'pkgs': ['python-keystoneclient'], },
+    },
+}, merge=salt['pillar.get']('openstack:client')) %}

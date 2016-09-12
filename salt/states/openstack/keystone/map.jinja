@@ -1,7 +1,6 @@
-
 {% set server = salt['grains.filter_by']({
     'Debian': {
-        'pkgs': ['keystone', 'python-keystone', 'python-keystoneclient', 'python-psycopg2', 'python-six', 'python-openstackclient', 'gettext-base'],
+        'pkgs': ['keystone', 'python-keystone', 'python-psycopg2', 'python-six', 'gettext-base'],
         'service_name': 'keystone',
         'version': 'mitaka',
         'api_version': '3',
@@ -25,24 +24,3 @@
         'roles': ['admin', 'Member']
     },
 }, merge=salt['pillar.get']('keystone:server')) %}
-
-{% set client = salt['grains.filter_by']({
-    'Debian': {
-        'pkgs': ['python-keystoneclient', 'python-openstackclient'],
-        'service': 'keystone',
-        'roles': ['admin', 'Member'],
-    },
-    'RedHat': {
-        'pkgs': ['python-keystoneclient'],
-        'roles': ['admin', 'Member'],
-    },
-}, merge=salt['pillar.get']('keystone:client')) %}
-
-{% set control = salt['grains.filter_by']({
-    'Debian': {
-        'pkgs': [],
-    },
-    'RedHat': {
-        'pkgs': [],
-    },
-}, merge=salt['pillar.get']('keystone:control')) %}

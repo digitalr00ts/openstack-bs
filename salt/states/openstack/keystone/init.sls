@@ -2,7 +2,8 @@
 # vim: ft=sls
 
 include:
-  - .packages
+  - ..client
+  - ..packages
   - .file
   - .manage
-  #- .endpoints
+  - ..api

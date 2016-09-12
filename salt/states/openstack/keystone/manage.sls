@@ -3,12 +3,12 @@
 
 {% from "mysql/defaults.yaml" import rawmap with context %}
 {%- set mysql = salt['grains.filter_by'](rawmap, grain='os', merge=salt['pillar.get']('mysql:server:lookup')) %}
-{%- from "keystone/map.jinja" import server with context %}
+{%- from "openstack/map.jinja" import server with context %}
 
 include:
   - mysql.python
   - mysql.user
-  - .packages
+  - ..packages
   - .file
 
 {%- if not grains.get('noservices', False) %}
@@ -24,7 +24,7 @@ keystone_syncdb:
     {% endfor %}
 {%- endif %}
 
-{% if server.tokens.engine == 'fernet' %}
+{% if server.service.keystone.tokens.engine == 'fernet' %}
 {%- if not grains.get('noservices', False) %}
 keystone_fernet_setup:
   cmd.wait:
@@ -32,6 +32,6 @@ keystone_fernet_setup:
   - watch:
     - ini: keystone_file_conf
   - require:
-    - pkg: keystone_packages
+    - pkg: os_packages_keystone
 {%- endif %}
 {% endif %}
