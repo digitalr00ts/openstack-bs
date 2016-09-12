@@ -12,7 +12,7 @@ base:
   '*':
     - enviroment.base
 
-controller:
+server:
   'controller*':
     - enviroment.controller
 #

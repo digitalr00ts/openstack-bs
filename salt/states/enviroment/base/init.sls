@@ -16,4 +16,4 @@ include:
   # - packages.system-update
   - packages.vim
   - packages.chrony
-  - packages.python-openstackclient
+  #- packages.python-openstackclient

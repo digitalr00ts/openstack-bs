@@ -12,4 +12,4 @@ include:
   - rabbitmq
   - memcached
   - mysql
-  #- keystone
+  #- openstack
